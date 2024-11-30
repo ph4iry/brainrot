@@ -2,11 +2,13 @@
   "name": "nextjs-live-transcription",
   "version": "1.0.2",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prompt": "node ./app/api/brainrot-ai/prompt-generator.js"
   },
   "dependencies": {
     "@deepgram/sdk": "^3.3.0",
