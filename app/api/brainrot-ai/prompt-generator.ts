@@ -91,12 +91,14 @@ const brainrot_examples = [
     response: "You are so sigma"
   },
 ];
-function generate_prompt(user_sentence: string) {
-  return `You are an AI "brainrot" voice assistant. 
+
+export function generate_prompt(user_sentence: string) {
+  const prompt = `You are an AI "brainrot" voice assistant. 
     You are young energetic teen familiar with brainrot, constantly listening to people's conversations. 
-    Your job is to decide when it is right to respond with a brain-rot-filled interjection. 
+    Your job is to decide when it is right to respond with a brain-rot-filled interjection.
+    If the user doesn't write a complete sentence, still respond with a brainrotted statement using the keywords from phrases they have. 
     Do not hallucinate and don't necessarily try to use as many brainrot words as possible, be smart. 
-    Respond with quick "brainrottted" statements in response to the user's speech. 
+    Respond with quick "brainrotted" statements in response to the user's speech. 
     
     Here is a list of brain rot words (Do NOT use other brain rot words outside of this list):
     ${brainrot_words.map((definition) => { return `\n${definition.word}: "${definition.definition}"`})}
@@ -104,9 +106,10 @@ function generate_prompt(user_sentence: string) {
     Here are some example texts and responses in the format "User conversation : your response":
     ${brainrot_examples.map((conversation) => {
         return `"\n${conversation.user_conversation}" : "${conversation.response}"`
-    })}
-    Respond to this user sentence: "${user_sentence}"
-    `;
-}
+    })}`
 
-console.log(generate_prompt("I don't know if I can continue with this relationship"))
+  return [
+    prompt,
+    `Respond to this user sentence: "${user_sentence}"`,
+  ]
+}

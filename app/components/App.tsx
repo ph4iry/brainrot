@@ -66,7 +66,17 @@ const App: () => JSX.Element = () => {
 
       if (isFinal && speechFinal) {
         if (thisCaption !== "") {
-          console.log("concluded caption: ", thisCaption);
+          fetch("/api/brainrot-ai", {
+            method: "POST",
+            body: JSON.stringify({ sentence: thisCaption }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }).then((res) => res.json())
+          .then((data) => {
+            console.log("data", data);
+            setCaption(data.response);
+          });
         }
         setCaption(thisCaption);
         clearTimeout(captionTimeout.current);
