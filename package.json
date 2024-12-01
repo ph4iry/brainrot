@@ -2,8 +2,7 @@
   "name": "nextjs-live-transcription",
   "version": "1.0.2",
   "private": true,
-  "type": "module",
-  "scripts": {
+    "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

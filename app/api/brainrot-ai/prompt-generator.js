@@ -118,11 +118,8 @@ export function generate_prompt(user_sentence) {
       })
     }
     `
-  console.log(prompt)
   return [
     prompt,
     `Respond to this user sentence: "${user_sentence}"`,
   ]
 }
-
-console.log(generate_prompt('You still have not gotten your drivers license?'))

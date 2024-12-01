@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   });
 
   console.log(completion.choices[0].message);
-
+  
 
   return new Response(JSON.stringify({ response: completion.choices[0].message.content }));
 }
