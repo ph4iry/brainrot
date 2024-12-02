@@ -6,7 +6,7 @@ const EDENAI_API_KEY = process.env.EDENAI_API_KEY
 export default async function TTS(sentence: string) {
   
   const payload = { text: sentence, input_language: "en" };
-  const launch_execution = await fetch(EDENAI_URL, {
+  const launch_execution = await fetch(EDENAI_URL!, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
