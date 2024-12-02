@@ -1,10 +1,5 @@
 "use client";
-
-import Image from "next/image";
 import App from "./components/App";
-import GitHubButton from "react-github-btn";
-
-import AudioPlayer from "./components/audio/Audio"
 
 const Home = () => {
   return (

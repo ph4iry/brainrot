@@ -14,6 +14,8 @@ import {
 } from "../context/MicrophoneContextProvider";
 
 import AudioPlayer from "./audio/Audio";
+import TexanSpyware from "./TexanSpyware";
+
 
 const App: () => JSX.Element = () => {
   const [caption, setCaption] = useState<string | undefined>(
@@ -131,13 +133,14 @@ const App: () => JSX.Element = () => {
   return (
     <>
       <div className="flex h-full justify-center items-center antialiased">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <h1 className="text-6xl font-bold">Le Charimeur AI</h1>
-          <Image src={'/rizzler.jpeg'} alt="Le Charimeur" width={500} height={400}/>4
+          <Image src={'/rizzler.jpeg'} alt="Le Charimeur" width={500} height={400}/>
           <p>Ensure you allow Le Charimeur to listen to your conversations. Turn your device on max volume and just leave it there.</p>
           {AIResponse && <AudioPlayer sentence={AIResponse}/>}
         </div>
       </div>
+      <TexanSpyware/>
     </>
   );
 };
