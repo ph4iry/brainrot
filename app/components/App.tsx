@@ -134,7 +134,7 @@ const App: () => JSX.Element = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-6xl font-bold">Le Charimeur AI</h1>
           <Image src={'/rizzler.jpeg'} alt="Le Charimeur" width={500} height={400}/>4
-          <p>Turn your device on max volume and just leave it there</p>
+          <p>Ensure you allow Le Charimeur to listen to your conversations. Turn your device on max volume and just leave it there.</p>
           {AIResponse && <AudioPlayer sentence={AIResponse}/>}
         </div>
       </div>
