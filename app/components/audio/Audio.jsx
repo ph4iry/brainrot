@@ -1,27 +1,34 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import TTS from "./tts";
 
-export default function AudioPlayer({ url }) {
+export default function AudioPlayer({ sentence }) {
   const [audio, setAudio] = useState(null);
-
+  console.log(`we are saying: ${sentence}`)
   useEffect(() => {
-    const newAudio = new Audio(url);
-    setAudio(newAudio);
-    newAudio.play().catch((error) => {
-      console.error("Audio playback failed:", error);
-    });
+    let currentAudio = null; // Declare an audio instance variable
 
-    return () => {
-      newAudio.pause();
-      newAudio.src = ""; // Release the audio object for garbage collection
-    };
-  }, [url]); // Reinitialize when `url` changes
-  const playAudio = () => {
-    if (audio) {
-      audio.play().catch((error) => {
+    const getAudioURL = async () => {
+      try {
+        const url = await TTS(sentence);
+        currentAudio = new Audio(url);
+        setAudio(currentAudio);
+        await currentAudio.play();
+      } catch (error) {
         console.error("Audio playback failed:", error);
-      });
-    }
-  };
-  return <button onClick={playAudio}>Play Audio</button>; // Render something for visibility
+      }
+    };
+
+    getAudioURL();
+
+    // Cleanup function
+    return () => {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.src = ""; // Release resources
+      }
+    };
+  }, [sentence]);
+
+  return null; // If no UI is needed
 }

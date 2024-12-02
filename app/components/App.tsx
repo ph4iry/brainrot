@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
   LiveConnectionState,
@@ -13,10 +13,13 @@ import {
   useMicrophone,
 } from "../context/MicrophoneContextProvider";
 
+import AudioPlayer from "./audio/Audio";
+
 const App: () => JSX.Element = () => {
   const [caption, setCaption] = useState<string | undefined>(
     ""
   );
+  const [AIResponse, setAIResponse] = useState<string | undefined>()
   const { connection, connectToDeepgram, connectionState } = useDeepgram();
   const { setupMicrophone, microphone, startMicrophone, microphoneState } =
     useMicrophone();
@@ -75,7 +78,7 @@ const App: () => JSX.Element = () => {
           }).then((res) => res.json())
           .then((data) => {
             console.log("data", data);
-            setCaption(data.response);
+            setAIResponse(data.response);
           });
         }
         setCaption(thisCaption);
@@ -129,7 +132,9 @@ const App: () => JSX.Element = () => {
     <>
       <div className="flex h-full justify-center items-center antialiased">
         <div className="max-w-4xl mx-auto text-center">
-          {caption && <span className="bg-black/70 p-8">{caption}</span>}
+          <h1 className="text-6xl font-bold">Le Charimeur AI</h1>
+          <Image src={'/rizzler.jpeg'} alt="Le Charimeur" width={500} height={400}/>
+          {AIResponse && <AudioPlayer sentence={AIResponse}/>}
         </div>
       </div>
     </>
