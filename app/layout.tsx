@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Comic_Neue } from "next/font/google";
 import classNames from "classnames";
 
 import { DeepgramContextProvider } from "./context/DeepgramContextProvider";
@@ -17,9 +17,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aura-tts-demo.deepgram.com"),
-  title: "Deepgram AI Agent",
-  description: `Deepgram's AI Agent Demo shows just how fast Speech-to-Text and Text-to-Speech can be.`,
+  title: "Le Charimeur AI",
+  description: `Let Le Charimeur AI add more brainrot to your conversations`,
   robots: {
     index: false,
     follow: false,
