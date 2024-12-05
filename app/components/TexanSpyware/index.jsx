@@ -11,8 +11,7 @@ export default function TexanSpyware() {
     { id: 1, type: "bucee" },
     { id: 2, type: "heb" },
   ]);
-  const songRef = useRef(new Audio("/texas-anthem.mp3"));
-  songRef.current.currentTime = 7;
+  
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -22,6 +21,8 @@ export default function TexanSpyware() {
         newTypedText.toLowerCase().includes("texas") ||
         newTypedText.toLowerCase().includes("texan")
       ) {
+        const songRef = (new Audio("/texas-anthem.mp3"));
+        songRef.current.currentTime = 7;
         songRef.current.play();
         setContainsTexas(true);
 
